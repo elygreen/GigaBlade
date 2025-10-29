@@ -3,10 +3,10 @@ extends Node
 signal stat_updated(stat_name, new_value)
 
 const STATS = {
-	StatTypes.PLAYER_SPEED: {"base": 200.0, "type": "multiplicative"},
-	StatTypes.MAX_HEALTH: {"base": 3, "type": "additive"},
-	StatTypes.SWORD_DAMAGE: {"base": 10, "type": "additive"},
-	StatTypes.SWORD_SIZE: {"base": 1.0, "type": "multiplicative"}
+	"speed": {"base": 200.0, "type": "multiplicative"},
+	"max_health": {"base": 3, "type": "additive"},
+	"sword_damage": {"base": 10, "type": "additive"},
+	"sword_size": {"base": 1.0, "type": "multiplicative"}
 }
 
 var perm_bonuses: Dictionary = {}

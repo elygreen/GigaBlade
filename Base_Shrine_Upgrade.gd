@@ -2,7 +2,7 @@ extends Resource
 class_name Base_Shrine_Upgrade
 
 @export var id: String = "default_id"
-@export_enum(StatTypes)
+@export var stat_to_modify: String = "stat_id"
 
 @export_multiline var title: String = "New Upgrade"
 @export_multiline var description: String = "Gives a one time bonus"
