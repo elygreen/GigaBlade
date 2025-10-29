@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_t63sh")
 id = "speed_boost_1"
-stat_to_modify = "base_speed"
+stat_to_modify = "speed"
 title = "Blessing of Speed I"
 description = "Permanently increases your base movement speed by 5%."
 bonus_value = 0.05

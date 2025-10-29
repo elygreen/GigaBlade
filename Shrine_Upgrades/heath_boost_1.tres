@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_0lusy")
 id = "health_boost_1"
-stat_to_modify = "base_health"
+stat_to_modify = "max_health"
 title = "Blessing of Health I"
 description = "Permanently increases your base health by 1."
 metadata/_custom_type_script = "uid://cibpxr1caebkh"
