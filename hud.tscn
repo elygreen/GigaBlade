@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://w08thk4g4c0d"]
+
+[ext_resource type="Script" uid="uid://cy6rekbwud015" path="res://hud.gd" id="1_37p78"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_37p78")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 366.0
+offset_bottom = 246.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="XP_Bar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Level_Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level"
+
+[node name="Damage_Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Damage"
+
+[node name="Movespeed_Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Movespeed"
+
+[node name="Time_Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Time"
+
+[node name="Health_Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Health"
+
+[node name="Score_Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Score: 0"
+
+[node name="Upgrade_Items_Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Score: 0"

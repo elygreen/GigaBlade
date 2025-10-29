@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://eitiiisdhj6a"]
+
+[ext_resource type="Script" uid="uid://uctljh37nw8d" path="res://Main_Scenes/main_menu.gd" id="1_pwica"]
+
+[node name="Main_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pwica")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.0
+offset_top = -211.0
+offset_right = 158.0
+offset_bottom = 211.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "GigaBlade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start_Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Shrine_Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "The Shrine"
+
+[connection signal="pressed" from="VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Shrine_Button" to="." method="_on_shrine_button_pressed"]

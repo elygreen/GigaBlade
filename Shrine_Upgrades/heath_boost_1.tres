@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Base_Shrine_Upgrade" load_steps=2 format=3 uid="uid://ce1xbwwxgln0b"]
+
+[ext_resource type="Script" uid="uid://cibpxr1caebkh" path="res://Base_Shrine_Upgrade.gd" id="1_0lusy"]
+
+[resource]
+script = ExtResource("1_0lusy")
+id = "health_boost_1"
+stat_to_modify = "base_health"
+title = "Blessing of Health I"
+description = "Permanently increases your base health by 1."
+metadata/_custom_type_script = "uid://cibpxr1caebkh"

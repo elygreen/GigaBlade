@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3sjm064bshsq"]
+
+[ext_resource type="Script" uid="uid://ctxtuqyjcecak" path="res://GameScreen/game_screen.gd" id="1_hj6vq"]
+[ext_resource type="PackedScene" uid="uid://rnt0uiq1vkwu" path="res://Player/Player.tscn" id="1_rug3u"]
+[ext_resource type="PackedScene" uid="uid://caifnve66koe2" path="res://GameScreen/Spawn_Manager/spawn_manager.tscn" id="2_rlmek"]
+[ext_resource type="PackedScene" uid="uid://bxuuak6ap0upk" path="res://GameScreen/enemy_container.tscn" id="3_hj6vq"]
+[ext_resource type="PackedScene" uid="uid://16sw57drj5nq" path="res://GameScreen/xp_orb_container.tscn" id="4_4hse2"]
+[ext_resource type="PackedScene" uid="uid://drv56t00ni1rl" path="res://GameScreen/level_up_screen.tscn" id="5_hj6vq"]
+[ext_resource type="PackedScene" uid="uid://w08thk4g4c0d" path="res://hud.tscn" id="7_4hse2"]
+
+[node name="GameScreen" type="Node2D" node_paths=PackedStringArray("player", "level_up_screen", "hud", "spawn_manager")]
+script = ExtResource("1_hj6vq")
+player = NodePath("Player")
+level_up_screen = NodePath("Level_Up_Screen")
+hud = NodePath("HUD")
+spawn_manager = NodePath("Spawn_Manager")
+
+[node name="Player" parent="." instance=ExtResource("1_rug3u")]
+position = Vector2(453, 254)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(480, 270)
+
+[node name="Spawn_Manager" parent="." node_paths=PackedStringArray("player", "xp_orb_container", "enemy_container") instance=ExtResource("2_rlmek")]
+player = NodePath("../Player")
+xp_orb_container = NodePath("../XP_Orb_Container")
+enemy_container = NodePath("../Enemy_Container")
+
+[node name="Enemy_Container" parent="." instance=ExtResource("3_hj6vq")]
+
+[node name="XP_Orb_Container" parent="." instance=ExtResource("4_4hse2")]
+
+[node name="Level_Up_Screen" parent="." instance=ExtResource("5_hj6vq")]
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 956.0
+offset_bottom = 543.0
+
+[node name="HUD" parent="." instance=ExtResource("7_4hse2")]
+
+[node name="Run_Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Spawn_Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Run_Timer" to="." method="_on_run_timer_timeout"]
+[connection signal="timeout" from="Spawn_Timer" to="." method="_on_spawn_timer_timeout"]

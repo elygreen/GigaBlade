@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1qg0ptmq3v8a"]
+
+[ext_resource type="Script" uid="uid://cawglokmkk7d0" path="res://Enemies/basic_enemy.gd" id="1_dvx36"]
+[ext_resource type="Texture2D" uid="uid://ck8oy7sde42hy" path="res://Test_Image.png" id="2_gie15"]
+[ext_resource type="PackedScene" uid="uid://c77irk07ugjss" path="res://xp_orb.tscn" id="2_iioo1"]
+[ext_resource type="PackedScene" uid="uid://cig6pci7eqpwd" path="res://upgrade_item.tscn" id="3_iioo1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_naotq"]
+size = Vector2(20, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwafm"]
+size = Vector2(38, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m2rku"]
+radius = 6.0827627
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gie15"]
+bg_color = Color(0.9843137, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iioo1"]
+bg_color = Color(0.32941177, 1, 0, 1)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_dvx36")
+xp_orb_scene = ExtResource("2_iioo1")
+upgrade_item_scene = ExtResource("3_iioo1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(16.962349, 3.1767657, 0, 1)
+texture = ExtResource("2_gie15")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["enemy_hitbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_naotq")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_rwafm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m2rku")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -38.0
+offset_top = -47.0
+offset_right = 39.0
+offset_bottom = -31.0
+theme_override_styles/background = SubResource("StyleBoxFlat_gie15")
+theme_override_styles/fill = SubResource("StyleBoxFlat_iioo1")
+show_percentage = false
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

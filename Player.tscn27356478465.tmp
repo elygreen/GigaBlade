@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://rnt0uiq1vkwu"]
+
+[ext_resource type="Script" uid="uid://50wjafxkthg3" path="res://player.gd" id="1_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://ck8oy7sde42hy" path="res://Test_Image.png" id="1_xhfnw"]
+[ext_resource type="PackedScene" uid="uid://b5jt8vbtw2kwj" path="res://Player_Sword.tscn" id="3_kne1u"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_kpjcp")
+
+[node name="Attack_Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Player_Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_xhfnw")
+
+[node name="Player_Sword" parent="." instance=ExtResource("3_kne1u")]
+position = Vector2(22, 1)
+
+[connection signal="timeout" from="Attack_Timer" to="." method="_on_attack_timer_timeout"]

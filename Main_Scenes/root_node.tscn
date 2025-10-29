@@ -1,0 +1,14 @@
+[gd_scene load_steps=6 format=3 uid="uid://dru1x6uwgxnlr"]
+
+[ext_resource type="Script" uid="uid://co7thokyblj0i" path="res://Main_Scenes/root_node.gd" id="1_thjpu"]
+[ext_resource type="PackedScene" uid="uid://eitiiisdhj6a" path="res://Main_Scenes/main_menu.tscn" id="2_bens0"]
+[ext_resource type="PackedScene" uid="uid://b3sjm064bshsq" path="res://GameScreen/game_screen.tscn" id="3_8albg"]
+[ext_resource type="PackedScene" uid="uid://2erhs8jnwqd" path="res://Main_Scenes/game_over_screen.tscn" id="4_8albg"]
+[ext_resource type="PackedScene" uid="uid://cstbdskohu83o" path="res://Main_Scenes/shrine_menu.tscn" id="5_xqj0n"]
+
+[node name="Root_Node" type="Node"]
+script = ExtResource("1_thjpu")
+main_menu_scene = ExtResource("2_bens0")
+game_screen_scene = ExtResource("3_8albg")
+game_over_scene = ExtResource("4_8albg")
+shrine_scene = ExtResource("5_xqj0n")
