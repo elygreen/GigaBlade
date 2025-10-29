@@ -10,13 +10,14 @@ class_name BasicEnemy
 @export var xp_orb_scene: PackedScene
 @export var upgrade_item_scene: PackedScene
 @export var upgrade_item_drop_chance: float = 0.1
+@export var hit_sound: AudioStream
+@export var death_sound: AudioStream
 
 @onready var health_bar = $ProgressBar
 
 
 enum State {CHASE}
 var current_state = State.CHASE
-var player_node: Node2D = null
 
 
 var player: Node2D = null
@@ -58,6 +59,7 @@ func get_hit(damage):
 
 
 func die():
+	AudioManager.play_sfx(death_sound)
 	if xp_orb_scene and is_instance_valid(xp_orb_container):
 		var xp_orb = xp_orb_scene.instantiate()
 		xp_orb.global_position = self.global_position

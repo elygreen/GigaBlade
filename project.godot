@@ -22,6 +22,7 @@ GlobalUpgrades="*res://GlobalUpgrades.gd"
 EnemyDatabase="*res://Enemy_Database.gd"
 SaveManager="*res://Save_Manager.gd"
 PlayerStats="*res://Player/Player_Stats.gd"
+AudioManager="*res://Audio_Manager.gd"
 
 [display]
 
