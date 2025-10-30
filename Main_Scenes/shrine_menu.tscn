@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cstbdskohu83o"]
+[gd_scene load_steps=4 format=3 uid="uid://cstbdskohu83o"]
 
 [ext_resource type="Script" uid="uid://tknv5lyiqdbc" path="res://Main_Scenes/shrine_menu.gd" id="1_2426o"]
 [ext_resource type="PackedScene" uid="uid://cr3u2uhc0crq0" path="res://Shrine_Upgrade_Card.tscn" id="2_hli8c"]
+[ext_resource type="FontFile" uid="uid://w303lbnxqq73" path="res://Fonts/determination.ttf" id="3_f1171"]
 
 [node name="Shrine_Menu" type="Control"]
 layout_mode = 3
@@ -15,41 +16,40 @@ upgrade_card_scene = ExtResource("2_hli8c")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_top = 80.0
-offset_right = 960.0
-offset_bottom = 109.0
+offset_left = 13.0
+offset_top = 26.0
+offset_right = 463.39
+offset_bottom = 55.0
+theme_override_fonts/font = ExtResource("3_f1171")
+theme_override_font_sizes/font_size = 12
 text = "The Shrine"
 horizontal_alignment = 1
 
 [node name="Upgrade_Item_Label" type="Label" parent="."]
 layout_mode = 0
-offset_top = 112.0
-offset_right = 960.0
-offset_bottom = 141.0
+offset_left = -13.0
+offset_top = 54.0
+offset_right = 487.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("3_f1171")
+theme_override_font_sizes/font_size = 12
 text = "Ore: 0"
 horizontal_alignment = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 316.0
-offset_top = 144.0
-offset_right = -316.0
-offset_bottom = -27.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Upgrade_Container" type="VBoxContainer" parent="ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="Back_Button" type="Button" parent="."]
 layout_mode = 0
 offset_right = 103.0
 offset_bottom = 45.0
 text = "Back"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 84.0
+offset_right = 418.0
+offset_bottom = 244.0
+
+[node name="Upgrade_Container" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
 
 [connection signal="pressed" from="Back_Button" to="." method="_on_back_button_pressed"]

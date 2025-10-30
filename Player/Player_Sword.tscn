@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cx2hkxlkmi6qw" path="res://Player/hitbox.gd" id="2_phvxj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8d1d"]
-size = Vector2(2, 21)
+size = Vector2(6.000001, 29)
 
 [sub_resource type="Animation" id="Animation_phvxj"]
 resource_name = "Combo_Swing"
@@ -208,7 +208,7 @@ region_rect = Rect2(3, 19, 9, 23)
 script = ExtResource("2_phvxj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword_Sprite/Hitbox"]
-position = Vector2(0, -15.5)
+position = Vector2(5.684342e-14, -11.5)
 shape = SubResource("RectangleShape2D_b8d1d")
 
 [node name="Player_Reference" type="Sprite2D" parent="."]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Base_Shrine_Upgrade" load_steps=2 format=3 uid="uid://b2gmuqsoivckm"]
+
+[ext_resource type="Script" uid="uid://cibpxr1caebkh" path="res://Base_Shrine_Upgrade.gd" id="1_ko81k"]
+
+[resource]
+script = ExtResource("1_ko81k")
+id = "sword_size_boost"
+stat_to_modify = "sword_size"
+title = "Bigger sword"
+description = "Permanently increase your sword size by 100%"
+metadata/_custom_type_script = "uid://cibpxr1caebkh"
