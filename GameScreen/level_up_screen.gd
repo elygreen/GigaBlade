@@ -21,8 +21,11 @@ func show_upgrades(choices: Array):
 		return
 	current_choices = choices
 	button_1.text = "%s\n%s" % [choices[0].title, choices[0].description]
+	button_1.icon = choices[0].icon
 	button_2.text = "%s\n%s" % [choices[1].title, choices[1].description]
+	button_2.icon = choices[1].icon
 	button_3.text = "%s\n%s" % [choices[2].title, choices[2].description]
+	button_3.icon = choices[2].icon
 	self.show()
 
 func _on_button_1_pressed():

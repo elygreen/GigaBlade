@@ -38,6 +38,6 @@ func spawn_one_enemy(enemy_scene: PackedScene):
 	var new_enemy = enemy_scene.instantiate()
 	new_enemy.global_position = spawn_position
 		
-	new_enemy.player_node = self.player
+	new_enemy.player = self.player
 	new_enemy.xp_orb_container = self.xp_orb_container
 	enemy_container.add_child(new_enemy)

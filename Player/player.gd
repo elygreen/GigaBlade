@@ -20,9 +20,7 @@ var current_player_speed: float = 200.0
 var current_player_max_health: int = 3
 var current_player_health: int = 3
 
-@export var dash_duration: float = 0.8
 @export var dash_speed_multiplier: float = 2.0
-@export var dash_cooldown: float = 4.0
 
 const STOP_DISTANCE = 5.0
 const ATTACK_DURATION = .5
@@ -37,14 +35,17 @@ enum State {IDLE, ATTACK}
 var current_state = State.IDLE
 var is_dashing = false
 
+var base_pickup_radius: float = 1.0
 
 func _ready():
 	target_position = global_position
 	PlayerStats.stat_updated.connect(on_stat_updated)
+	# Initialize Stats
 	current_player_max_health = PlayerStats.get_stat("max_health")
 	current_player_health = current_player_max_health
 	player_sword_hitbox.damage = PlayerStats.get_stat("sword_damage")
-	player_sword.scale = Vector2(1, 1) * PlayerStats.get_stat("sword_size")
+	update_sword_scale()
+	update_pickup_radius()
 	emit_signal("health_changed", current_player_health, current_player_max_health)
 	emit_signal("experience_changed", current_xp, xp_to_next_level, current_level)
 	
@@ -69,8 +70,8 @@ func on_stat_updated(stat_name: String, new_value):
 	match stat_name:
 		"sword_damage":
 			player_sword_hitbox.damage = new_value
-		"sword_size":
-			player_sword.scale = Vector2(1, 1) * new_value
+		"sword_size", "sword_length", "sword_width":
+			update_sword_scale()
 		"max_health":
 			# Heal the player for the amount their max HP increased
 			var health_increase = new_value - current_player_max_health
@@ -79,6 +80,12 @@ func on_stat_updated(stat_name: String, new_value):
 			emit_signal("health_changed", current_player_health, current_player_max_health)
 		"speed":
 			pass
+		"dash_timer":
+			dash_cooldown_timer.wait_time = max(0.3, new_value)
+		"dash_duration":
+			dash_timer.wait_time = max(0.1, new_value)
+		"pickup_radius":
+			update_pickup_radius()
 
 func idle_state():
 	if Input.is_action_just_pressed("attack"):
@@ -93,7 +100,9 @@ func handle_dash_input():
 	if Input.is_action_just_pressed("player_dash"):
 		if !is_dashing and dash_cooldown_timer.is_stopped():
 			is_dashing = true
+			var dash_duration = PlayerStats.get_stat("dash_duration")
 			dash_timer.start(dash_duration)
+			var dash_cooldown = PlayerStats.get_stat("dash_timer")
 			dash_cooldown_timer.start(dash_cooldown)
 
 func player_movement():
@@ -137,8 +146,24 @@ func _on_pickup_area_area_entered(area: Area2D) -> void:
 	if area.has_method("collect"):
 		area.collect(self)
 
+func update_sword_scale():
+	var size = PlayerStats.get_stat("sword_size")
+	var length = PlayerStats.get_stat("sword_length")
+	var width = PlayerStats.get_stat("sword_width")
+	player_sword.scale = Vector2(width, length) * size
+
+func update_pickup_radius():
+	var radius_multiplier = PlayerStats.get_stat("pickup_radius")
+	pickup_area.scale = Vector2(1, 1) * radius_multiplier
+
 func add_experience(amount: int):
-	current_xp += amount
+	var xp_modifier = PlayerStats.get_stat("experience_modifier")
+	var modified_amount_float = amount * xp_modifier
+	var base_amount = int(modified_amount_float)
+	var fractional_part = modified_amount_float - base_amount
+	if randf() < fractional_part:
+		base_amount += 1
+	current_xp += base_amount
 	emit_signal("experience_changed", current_xp, xp_to_next_level, current_level)
 	while current_xp >= xp_to_next_level:
 		level_up()

@@ -6,7 +6,20 @@ const STATS = {
 	"speed": {"base": 200.0, "type": "multiplicative"},
 	"max_health": {"base": 3, "type": "additive"},
 	"sword_damage": {"base": 10, "type": "additive"},
-	"sword_size": {"base": 1.0, "type": "multiplicative"}
+	"sword_size": {"base": 1.0, "type": "multiplicative"},
+	"sword_length": {"base": 1.0, "type": "multiplicative"},
+	"sword_width": {"base": 1.0, "type": "multiplicative"},
+	"crit_chance": {"base": 0, "type": "additive"},
+	"crit_modifier": {"base": 1.0, "type": "multiplicative"},
+	"dash_timer": {"base": 5, "type": "additive"},
+	"dash_duration": {"base": 2, "type": "additive"},
+	"luck": {"base": 0, "type": "additive"},
+	"experience_modifier": {"base": 1.0, "type": "multiplicative"},
+	"projectile_count": {"base": 0, "type": "additive"},
+	"projectile_speed": {"base": 1.0, "type": "multiplicative"},
+	"immunity_duration": {"base": 0, "type": "additive"},
+	"pickup_radius": {"base": 1.0, "type": "multiplicative"},
+	"execution_threshold": {"base": 0, "type": "additive"},
 }
 
 var perm_bonuses: Dictionary = {}
