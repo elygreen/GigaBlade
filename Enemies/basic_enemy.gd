@@ -13,7 +13,7 @@ class_name BasicEnemy
 @export var hit_sound: AudioStream
 @export var death_sound: AudioStream
 
-@onready var health_bar = $ProgressBar
+@onready var health_bar = $TextureProgressBar
 
 
 enum State {CHASE}
