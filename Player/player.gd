@@ -7,8 +7,8 @@ signal experience_changed(current_xp, max_xp, level)
 
 @onready var player_container = $Player_Container
 @onready var player_sword = $Player_Container/Player_Sword
-@onready var player_sword_hitbox = $Player_Container/Player_Sword/Hitbox
-@onready var player_sword_hitbox_collision = $Player_Container/Player_Sword/Hitbox/CollisionShape2D
+@onready var player_sword_hitbox = $Player_Container/Player_Sword/Sword_Sprite/Hitbox
+@onready var player_sword_hitbox_collision = $Player_Container/Player_Sword/Sword_Sprite/Hitbox/CollisionShape2D
 @onready var player_sprite = $Player_Container/Player_Sprite
 @onready var attack_timer = $Attack_Timer
 @onready var dash_timer = $Dash_Timer
