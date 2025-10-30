@@ -5,7 +5,7 @@ class_name BasicEnemy
 @export var current_health: int = 10
 @export var max_health: int = 10
 @export var health_modifier: float = 1.0
-@export var speed: float = 75.0
+@export var speed: float = 50.0
 @export var speed_modifier: float = 1.0
 @export var xp_orb_scene: PackedScene
 @export var upgrade_item_scene: PackedScene
@@ -27,6 +27,8 @@ var xp_orb_container: Node2D = null
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	current_health = int(max_health * health_modifier)
+	speed_modifier = randf_range(0.7, 1.3)
+	scale = scale * randf_range(0.7, 1.3)
 	speed = speed * speed_modifier
 	health_bar.max_value = max_health
 	health_bar.value = current_health

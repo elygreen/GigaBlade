@@ -13,9 +13,10 @@ script = ExtResource("1_qdmgq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 380.0
-offset_right = 581.0
-offset_bottom = 541.0
+offset_left = 137.0
+offset_top = -154.0
+offset_right = 338.0
+offset_bottom = 387.0
 alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer"]
