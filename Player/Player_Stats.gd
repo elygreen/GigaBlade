@@ -10,11 +10,11 @@ const STATS = {
 	"sword_length": {"base": 1.0, "type": "multiplicative"},
 	"sword_width": {"base": 1.0, "type": "multiplicative"},
 	"crit_chance": {"base": 0, "type": "additive"},
-	"crit_modifier": {"base": 0.0, "type": "multiplicative"},
+	"crit_modifier": {"base": 1.0, "type": "multiplicative"},
 	"dash_timer": {"base": 5, "type": "additive"},
 	"dash_duration": {"base": 2, "type": "additive"},
 	"luck": {"base": 0, "type": "additive"},
-	"experience_modifier": {"base": 0.0, "type": "multiplicative"},
+	"experience_modifier": {"base": 1.0, "type": "multiplicative"},
 	"projectile_count": {"base": 0, "type": "additive"},
 	"projectile_speed": {"base": 0.0, "type": "multiplicative"},
 	"immunity_duration": {"base": 0, "type": "additive"},
@@ -61,7 +61,11 @@ func get_stat(stat_name: String):
 	if config.type == "multiplicative":
 		return base * (1.0 + permanent_value) * run_value
 	else:
-		return int(base + permanent_value + run_value)
+		var total = base + permanent_value + run_value
+		if typeof(base) == TYPE_INT:
+			return int(total)
+		else:
+			return total
 
 func apply_run_upgrade(upgrade_data: Dictionary):
 	var stat = upgrade_data["stat"]
