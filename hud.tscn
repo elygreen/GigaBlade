@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://w08thk4g4c0d"]
+[gd_scene load_steps=3 format=3 uid="uid://w08thk4g4c0d"]
 
 [ext_resource type="Script" uid="uid://cy6rekbwud015" path="res://hud.gd" id="1_37p78"]
+[ext_resource type="FontFile" uid="uid://w303lbnxqq73" path="res://Fonts/determination.ttf" id="2_64ctp"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_37p78")
@@ -21,28 +22,42 @@ layout_mode = 2
 
 [node name="Level_Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_64ctp")
+theme_override_font_sizes/font_size = 12
 text = "Level"
 
 [node name="Damage_Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Damage"
-
-[node name="Movespeed_Label" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Movespeed"
+theme_override_fonts/font = ExtResource("2_64ctp")
+theme_override_font_sizes/font_size = 12
+text = "The Quick brown fox"
 
 [node name="Time_Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Time"
+theme_override_fonts/font = ExtResource("2_64ctp")
+theme_override_font_sizes/font_size = 12
+text = "The Quick brown fox"
+
+[node name="Movespeed_Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_64ctp")
+theme_override_font_sizes/font_size = 12
+text = "Level"
 
 [node name="Health_Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Health"
+theme_override_fonts/font = ExtResource("2_64ctp")
+theme_override_font_sizes/font_size = 12
+text = "Level"
 
 [node name="Score_Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Score: 0"
+theme_override_fonts/font = ExtResource("2_64ctp")
+theme_override_font_sizes/font_size = 12
+text = "Level"
 
 [node name="Upgrade_Items_Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Score: 0"
+theme_override_fonts/font = ExtResource("2_64ctp")
+theme_override_font_sizes/font_size = 12
+text = "Level"

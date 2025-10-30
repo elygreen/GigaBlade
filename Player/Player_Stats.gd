@@ -3,7 +3,7 @@ extends Node
 signal stat_updated(stat_name, new_value)
 
 const STATS = {
-	"speed": {"base": 200.0, "type": "multiplicative"},
+	"speed": {"base": 75.0, "type": "multiplicative"},
 	"max_health": {"base": 3, "type": "additive"},
 	"sword_damage": {"base": 10, "type": "additive"},
 	"sword_size": {"base": 0.0, "type": "multiplicative"},

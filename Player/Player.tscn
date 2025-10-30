@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://rnt0uiq1vkwu"]
 
 [ext_resource type="Script" uid="uid://50wjafxkthg3" path="res://Player/player.gd" id="1_kpjcp"]
-[ext_resource type="Texture2D" uid="uid://ck8oy7sde42hy" path="res://Test_Image.png" id="1_xhfnw"]
 [ext_resource type="PackedScene" uid="uid://b5jt8vbtw2kwj" path="res://Player/Player_Sword.tscn" id="3_kne1u"]
+[ext_resource type="Texture2D" uid="uid://3ggeosr4ahqw" path="res://Images/GigaBladeSpritesheet.png" id="3_tok1r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kne1u"]
 size = Vector2(22, 22)
@@ -16,10 +16,11 @@ script = ExtResource("1_kpjcp")
 [node name="Player_Container" type="Node2D" parent="."]
 
 [node name="Player_Sword" parent="Player_Container" instance=ExtResource("3_kne1u")]
-position = Vector2(22, 1)
 
 [node name="Player_Sprite" type="Sprite2D" parent="Player_Container"]
-texture = ExtResource("1_xhfnw")
+texture = ExtResource("3_tok1r")
+region_enabled = true
+region_rect = Rect2(1, 1, 14, 15)
 
 [node name="Hurtbox" type="Area2D" parent="."]
 

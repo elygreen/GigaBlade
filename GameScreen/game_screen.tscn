@@ -31,10 +31,15 @@ enemy_container = NodePath("../Enemy_Container")
 [node name="XP_Orb_Container" parent="." instance=ExtResource("4_4hse2")]
 
 [node name="Level_Up_Screen" parent="." instance=ExtResource("5_hj6vq")]
-offset_left = 1.0
-offset_top = 3.0
-offset_right = 956.0
-offset_bottom = 543.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 281.0
+offset_top = 157.0
+offset_right = 676.0
+offset_bottom = 381.0
 
 [node name="HUD" parent="." instance=ExtResource("7_4hse2")]
 

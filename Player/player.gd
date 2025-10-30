@@ -16,7 +16,7 @@ signal experience_changed(current_xp, max_xp, level)
 @onready var pickup_area = $Pickup_Area
 
 # Moment to moment stats
-var current_player_speed: float = 200.0
+var current_player_speed: float = 100.0
 var current_player_max_health: int = 3
 var current_player_health: int = 3
 
