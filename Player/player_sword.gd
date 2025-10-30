@@ -1,11 +1,30 @@
 extends Node2D
 
-func _ready() -> void:
-	pass # Replace with function body.
+@onready var animation = $AnimationPlayer
+
+var counter = 0
+var is_attacking = false
+var parry_ready = false
+
 
 func _process(delta: float) -> void:
-	pass
+	look_at(get_global_mouse_position())
+	if Input.is_action_pressed("attack"):
+		if not is_attacking:
+			if parry_ready:
+				parry_ready = false
+				if animation.current_animation != "Special_Attack":
+					animation.play("Special_Attack")
+					is_attacking = true
+			else:
+				animation.play("Combo_Swing")
+				is_attacking = true
+	else:
+		is_attacking = false
+		animation.play("Idle")
 
+func fire_projectile():
+	pass
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.owner and area.owner.is_in_group("enemy"):

@@ -52,19 +52,9 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	handle_dash_input()
-	var base_speed = PlayerStats.get_stat("speed")
-	if is_dashing:
-		current_player_speed = base_speed * dash_speed_multiplier
-	else:
-		current_player_speed = base_speed
-	match current_state:
-		State.IDLE:
-			idle_state()
-		State.ATTACK:
-			attack_state()
 	player_movement()
-	horizontal_orientation()
 	move_and_slide()
+
 
 func on_stat_updated(stat_name: String, new_value):
 	match stat_name:
@@ -86,12 +76,6 @@ func on_stat_updated(stat_name: String, new_value):
 			dash_timer.wait_time = max(0.1, new_value)
 		"pickup_radius":
 			update_pickup_radius()
-
-func idle_state():
-	if Input.is_action_just_pressed("attack"):
-		current_state = State.ATTACK
-
-func attack_state():
 	if attack_timer.is_stopped():
 		attack_timer.start(ATTACK_DURATION)
 		player_sword.rotation_degrees = 90
@@ -105,7 +89,7 @@ func handle_dash_input():
 			var dash_cooldown = PlayerStats.get_stat("dash_timer")
 			dash_cooldown_timer.start(dash_cooldown)
 
-func player_movement():
+func player_movement_old():
 	target_position = get_global_mouse_position()
 	var distance_to_target = global_position.distance_to(target_position)
 	if distance_to_target > STOP_DISTANCE:
@@ -114,11 +98,22 @@ func player_movement():
 	else:
 		velocity = Vector2.ZERO
 
-func horizontal_orientation():
-	if get_global_mouse_position().x > self.global_position.x:
-		player_container.scale.x = 1
-	elif get_global_mouse_position().x < self.global_position.x:
-		player_container.scale.x = -1
+func player_movement():
+	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var base_speed = PlayerStats.get_stat("speed")
+	velocity = direction * current_player_speed
+	player_sprite.flip_h = direction.x < 0
+	if is_dashing:
+		current_player_speed = base_speed * dash_speed_multiplier
+	else:
+		current_player_speed = base_speed
+	if direction != Vector2(0, 0):
+		#implement idle animation
+		pass
+	else:
+		#implement moving animation
+		pass
+	move_and_slide()
 
 func get_hit():
 	current_player_health -= 1
