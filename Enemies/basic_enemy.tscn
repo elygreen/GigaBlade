@@ -20,7 +20,7 @@ bg_color = Color(0.9843137, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iioo1"]
 bg_color = Color(0.32941177, 1, 0, 1)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_dvx36")
 xp_orb_scene = ExtResource("2_iioo1")
 upgrade_item_scene = ExtResource("3_iioo1")
@@ -50,5 +50,3 @@ offset_bottom = -31.0
 theme_override_styles/background = SubResource("StyleBoxFlat_gie15")
 theme_override_styles/fill = SubResource("StyleBoxFlat_iioo1")
 show_percentage = false
-
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

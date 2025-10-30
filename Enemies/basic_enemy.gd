@@ -70,8 +70,3 @@ func die():
 			upgrade_item.global_position = self.global_position
 			xp_orb_container.call_deferred("add_child", upgrade_item)
 	call_deferred("queue_free")
-
-
-func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("ally_hitbox"):
-		get_hit(area.damage)

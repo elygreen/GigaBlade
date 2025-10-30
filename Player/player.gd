@@ -150,7 +150,7 @@ func update_sword_scale():
 	var size = PlayerStats.get_stat("sword_size")
 	var length = PlayerStats.get_stat("sword_length")
 	var width = PlayerStats.get_stat("sword_width")
-	player_sword.scale = Vector2(width, length) * size
+	player_sword.scale = Vector2(1, 1) * Vector2(width, length) * size
 
 func update_pickup_radius():
 	var radius_multiplier = PlayerStats.get_stat("pickup_radius")
