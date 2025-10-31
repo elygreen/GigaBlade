@@ -21,9 +21,6 @@ exit_door = NodePath("Exit_Door")
 [node name="Player" parent="." instance=ExtResource("1_rug3u")]
 position = Vector2(226, 138)
 
-[node name="Exit_Door" parent="." instance=ExtResource("8_thcdu")]
-position = Vector2(360, 217)
-
 [node name="Spawn_Manager" parent="." node_paths=PackedStringArray("player", "xp_orb_container", "enemy_container") instance=ExtResource("2_rlmek")]
 player = NodePath("../Player")
 xp_orb_container = NodePath("../XP_Orb_Container")
@@ -33,17 +30,6 @@ enemy_container = NodePath("../Enemy_Container")
 
 [node name="XP_Orb_Container" parent="." instance=ExtResource("4_4hse2")]
 
-[node name="Level_Up_Screen" parent="." instance=ExtResource("5_hj6vq")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 34.0
-offset_top = 37.0
-offset_right = 322.0
-offset_bottom = 219.0
-
 [node name="HUD" parent="." instance=ExtResource("7_4hse2")]
 
 [node name="Run_Timer" type="Timer" parent="."]
@@ -52,5 +38,10 @@ autostart = true
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Room_1" parent="." instance=ExtResource("9_txnu5")]
+
+[node name="Exit_Door" parent="." instance=ExtResource("8_thcdu")]
+position = Vector2(180, 9)
+
+[node name="Level_Up_Screen" parent="." instance=ExtResource("5_hj6vq")]
 
 [connection signal="timeout" from="Run_Timer" to="." method="_on_run_timer_timeout"]

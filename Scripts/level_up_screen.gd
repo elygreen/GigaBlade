@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 signal upgrade_selected(upgrade_data)
 

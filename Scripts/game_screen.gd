@@ -3,7 +3,7 @@ extends Node2D
 signal game_over
 
 @export var player: CharacterBody2D
-@export var level_up_screen: Control
+@export var level_up_screen: CanvasLayer
 @export var hud: CanvasLayer
 @export var spawn_manager: Node2D
 @export var exit_door: Node2D

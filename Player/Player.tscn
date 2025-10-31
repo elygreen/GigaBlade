@@ -15,6 +15,7 @@ radius = 2.0
 height = 10.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 1
 script = ExtResource("1_kpjcp")
 
 [node name="Player_Container" type="Node2D" parent="."]
