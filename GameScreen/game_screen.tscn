@@ -23,9 +23,6 @@ position = Vector2(226, 138)
 [node name="Exit_Door" parent="." instance=ExtResource("8_thcdu")]
 position = Vector2(360, 217)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(240, 135)
-
 [node name="Spawn_Manager" parent="." node_paths=PackedStringArray("player", "xp_orb_container", "enemy_container") instance=ExtResource("2_rlmek")]
 player = NodePath("../Player")
 xp_orb_container = NodePath("../XP_Orb_Container")
@@ -50,5 +47,7 @@ offset_bottom = 246.0
 
 [node name="Run_Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="timeout" from="Run_Timer" to="." method="_on_run_timer_timeout"]

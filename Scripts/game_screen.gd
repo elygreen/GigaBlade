@@ -8,7 +8,10 @@ signal game_over
 @export var spawn_manager: Node2D
 @export var exit_door: Node2D
 @export var level_weight: float = 2.0
+@export var camera_mouse_influence: float = 0.1
+@export var camera_smoothing_speed: float = 5.0
 
+@onready var player_camera = $Camera2D
 @onready var run_timer = $Run_Timer
 @onready var enemy_container = $Enemy_Container
 
@@ -26,6 +29,8 @@ func _ready() -> void:
 	level_up_screen.upgrade_selected.connect(on_upgrade_selected)
 	exit_door.player_entered_exit.connect(on_player_entered_exit)
 	SaveManager.upgrade_items_changed.connect(hud.set_upgrade_items)
+	if player:
+		player_camera.global_position = player.global_position
 
 	PlayerStats.reset_run_stats()
 	PlayerStats.apply_permanent_bonuses()
@@ -40,12 +45,21 @@ func _process(delta: float) -> void:
 	if exit_door.is_locked and enemy_container.get_child_count() == 0:
 		print("all enemies killed, unlocking door")
 		exit_door.unlock_door()
+	camera_process(delta)
 
 func start_new_room():
 	exit_door.lock_door()
 	difficulty_score += difficulty_adder
 	hud.set_score(int(difficulty_score))
 	spawn_manager.spawn_wave(difficulty_score)
+
+func camera_process(delta):
+	var player_pos = player.global_position
+	var mouse_pos = get_global_mouse_position()
+	var direction_to_mouse = (mouse_pos - player_pos)
+	var mouse_offset = direction_to_mouse * camera_mouse_influence
+	var target_pos = player_pos + mouse_offset
+	player_camera.global_position = player_camera.global_position.lerp(target_pos, camera_smoothing_speed * delta)
 
 func on_player_entered_exit():
 	current_room += 1
