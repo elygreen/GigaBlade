@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b3sjm064bshsq"]
 
-[ext_resource type="Script" uid="uid://ctxtuqyjcecak" path="res://GameScreen/game_screen.gd" id="1_hj6vq"]
+[ext_resource type="Script" uid="uid://ctxtuqyjcecak" path="res://Scripts/game_screen.gd" id="1_hj6vq"]
 [ext_resource type="PackedScene" uid="uid://rnt0uiq1vkwu" path="res://Player/Player.tscn" id="1_rug3u"]
 [ext_resource type="PackedScene" uid="uid://caifnve66koe2" path="res://GameScreen/Spawn_Manager/spawn_manager.tscn" id="2_rlmek"]
 [ext_resource type="PackedScene" uid="uid://bxuuak6ap0upk" path="res://GameScreen/enemy_container.tscn" id="3_hj6vq"]

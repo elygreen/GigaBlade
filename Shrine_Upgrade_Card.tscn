@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cr3u2uhc0crq0"]
 
-[ext_resource type="Script" uid="uid://bjjp48d7qella" path="res://shrine_upgrade_card.gd" id="1_f6q34"]
+[ext_resource type="Script" uid="uid://bjjp48d7qella" path="res://Scripts/shrine_upgrade_card.gd" id="1_f6q34"]
 
 [node name="Shrine_Upgrade_Card" type="PanelContainer"]
 offset_right = 121.0

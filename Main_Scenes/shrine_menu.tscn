@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cstbdskohu83o"]
 
-[ext_resource type="Script" uid="uid://tknv5lyiqdbc" path="res://Main_Scenes/shrine_menu.gd" id="1_2426o"]
+[ext_resource type="Script" uid="uid://tknv5lyiqdbc" path="res://Scripts/shrine_menu.gd" id="1_2426o"]
 [ext_resource type="PackedScene" uid="uid://cr3u2uhc0crq0" path="res://Shrine_Upgrade_Card.tscn" id="2_hli8c"]
 [ext_resource type="FontFile" uid="uid://w303lbnxqq73" path="res://Fonts/determination.ttf" id="3_f1171"]
 

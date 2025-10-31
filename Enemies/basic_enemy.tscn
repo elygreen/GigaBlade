@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b1qg0ptmq3v8a"]
 
-[ext_resource type="Script" uid="uid://cawglokmkk7d0" path="res://Enemies/basic_enemy.gd" id="1_dvx36"]
+[ext_resource type="Script" uid="uid://cawglokmkk7d0" path="res://Scripts/basic_enemy.gd" id="1_dvx36"]
 [ext_resource type="PackedScene" uid="uid://c77irk07ugjss" path="res://xp_orb.tscn" id="2_iioo1"]
 [ext_resource type="PackedScene" uid="uid://cig6pci7eqpwd" path="res://upgrade_item.tscn" id="3_iioo1"]
 [ext_resource type="Texture2D" uid="uid://3ggeosr4ahqw" path="res://Images/GigaBladeSpritesheet.png" id="4_iioo1"]

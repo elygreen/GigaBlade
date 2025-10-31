@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://eitiiisdhj6a"]
 
-[ext_resource type="Script" uid="uid://uctljh37nw8d" path="res://Main_Scenes/main_menu.gd" id="1_pwica"]
+[ext_resource type="Script" uid="uid://uctljh37nw8d" path="res://Scripts/main_menu.gd" id="1_pwica"]
 [ext_resource type="FontFile" uid="uid://w303lbnxqq73" path="res://Fonts/determination.ttf" id="2_d01hs"]
 
 [node name="Main_Menu" type="Control"]

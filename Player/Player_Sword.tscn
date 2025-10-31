@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://b5jt8vbtw2kwj"]
 
-[ext_resource type="Script" uid="uid://m6ek6h7acdmq" path="res://Player/player_sword.gd" id="1_phvxj"]
+[ext_resource type="Script" uid="uid://m6ek6h7acdmq" path="res://Scripts/player_sword.gd" id="1_phvxj"]
 [ext_resource type="Texture2D" uid="uid://3ggeosr4ahqw" path="res://Images/GigaBladeSpritesheet.png" id="2_1axs4"]
-[ext_resource type="Script" uid="uid://cx2hkxlkmi6qw" path="res://Player/hitbox.gd" id="2_phvxj"]
+[ext_resource type="Script" uid="uid://cx2hkxlkmi6qw" path="res://Scripts/hitbox.gd" id="2_phvxj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8d1d"]
 size = Vector2(6.000001, 29)

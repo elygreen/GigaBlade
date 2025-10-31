@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Base_Shrine_Upgrade" load_steps=2 format=3 uid="uid://ce1xbwwxgln0b"]
 
-[ext_resource type="Script" uid="uid://cibpxr1caebkh" path="res://Base_Shrine_Upgrade.gd" id="1_0lusy"]
+[ext_resource type="Script" uid="uid://cibpxr1caebkh" path="res://Scripts/Base_Shrine_Upgrade.gd" id="1_0lusy"]
 
 [resource]
 script = ExtResource("1_0lusy")

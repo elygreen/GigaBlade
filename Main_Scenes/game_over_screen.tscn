@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://2erhs8jnwqd"]
 
-[ext_resource type="Script" uid="uid://btdwodo4bucer" path="res://Main_Scenes/game_over_screen.gd" id="1_qdmgq"]
+[ext_resource type="Script" uid="uid://btdwodo4bucer" path="res://Scripts/game_over_screen.gd" id="1_qdmgq"]
 
 [node name="Game_Over_Screen" type="Control"]
 layout_mode = 3
