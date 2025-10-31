@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name BasicEnemy
 
+@export var damage_number_scene: PackedScene
+
 @export var current_health: int = 10
 @export var max_health: int = 10
 @export var health_modifier: float = 1.0
@@ -51,8 +53,13 @@ func chase_state():
 	velocity = direction * speed
 
 
-func get_hit(damage):
+func get_hit(damage, is_crit: bool = false):
 	current_health -= damage
+	if damage_number_scene and is_instance_valid(xp_orb_container):
+		var damage_number = damage_number_scene.instantiate()
+		xp_orb_container.call_deferred("add_child", damage_number)
+		var spawn_pos = global_position + Vector2(randf_range(-8, 8), randf_range(-8, 8))
+		damage_number.start(damage, spawn_pos, is_crit)
 	if !health_bar.visible:
 		health_bar.visible = true
 	health_bar.value = current_health

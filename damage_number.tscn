@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlsdd6r5sa5hh"]
+
+[ext_resource type="FontFile" uid="uid://b7wv170khbcco" path="res://Fonts/windows.ttf" id="1_jany0"]
+[ext_resource type="Script" uid="uid://c58nf5v0l12gg" path="res://damage_number.gd" id="2_6f2ja"]
+
+[node name="Damage_Number" type="Label"]
+offset_right = 46.0
+offset_bottom = 23.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = ExtResource("1_jany0")
+theme_override_font_sizes/font_size = 12
+text = "123"
+script = ExtResource("2_6f2ja")
