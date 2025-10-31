@@ -36,25 +36,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(-4, -17), Vector2(18, -1), Vector2(-2, 17), Vector2(14, 0)]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sword_Sprite/Hitbox:monitorable")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.44, 0.45, 0.46, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [true, true, true, true, true, true]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0.15, 0.55),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -64,6 +52,18 @@ tracks/3/keys = {
 "args": [],
 "method": &"fire_projectile"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sword_Sprite/Hitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.44, 0.45, 0.46, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_j34ve"]
@@ -93,18 +93,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1.1059974, 1.1853783),
 "update": 0,
 "values": [Vector2(10, -3), Vector2(9, -2)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sword_Sprite/Hitbox:monitorable")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, false]
 }
 
 [sub_resource type="Animation" id="Animation_1axs4"]
@@ -144,6 +132,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sword_Sprite/Hitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_j5cgq"]
