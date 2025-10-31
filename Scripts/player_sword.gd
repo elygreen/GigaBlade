@@ -1,11 +1,11 @@
 extends Node2D
 
 @onready var animation = $AnimationPlayer
+@onready var sword_sprite =$Sword_Sprite
 
 var counter = 0
 var is_attacking = false
 var parry_ready = false
-var enemits_hit_this_swing = []
 
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
@@ -19,7 +19,15 @@ func _process(delta: float) -> void:
 			else:
 				animation.play("Combo_Swing")
 				is_attacking = true
+				if abs(global_rotation) > PI / 2:
+					scale.y = -1
+				else:
+					scale.y = 1
 	else:
+		if abs(global_rotation) > PI / 2:
+			scale.y = -1
+		else:
+			scale.y = 1
 		is_attacking = false
 		animation.play("Idle")
 
