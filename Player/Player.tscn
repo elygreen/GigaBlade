@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://rnt0uiq1vkwu"]
+[gd_scene load_steps=7 format=3 uid="uid://rnt0uiq1vkwu"]
 
 [ext_resource type="Script" uid="uid://50wjafxkthg3" path="res://Scripts/player.gd" id="1_kpjcp"]
 [ext_resource type="PackedScene" uid="uid://b5jt8vbtw2kwj" path="res://Player/Player_Sword.tscn" id="3_kne1u"]
@@ -9,6 +9,10 @@ size = Vector2(8, 12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tok1r"]
 radius = 36.013885
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tok1r"]
+radius = 2.0
+height = 10.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_kpjcp")
@@ -40,6 +44,11 @@ one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup_Area"]
 shape = SubResource("CircleShape2D_tok1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_tok1r")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="Attack_Timer" to="." method="_on_attack_timer_timeout"]

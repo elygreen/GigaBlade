@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dd8svfbh6os4n" path="res://Scripts/exit_door.gd" id="1_hmrco"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wj4v1"]
-size = Vector2(32, 32)
+size = Vector2(50, 50)
 
 [node name="Exit_Door" type="Node2D"]
 script = ExtResource("1_hmrco")

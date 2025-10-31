@@ -21,7 +21,7 @@ exit_door = NodePath("Exit_Door")
 position = Vector2(226, 138)
 
 [node name="Exit_Door" parent="." instance=ExtResource("8_thcdu")]
-position = Vector2(239, 13)
+position = Vector2(360, 217)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(240, 135)

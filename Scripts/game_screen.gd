@@ -14,6 +14,7 @@ signal game_over
 
 var current_run_time: int = 0
 var difficulty_score = 1
+var difficulty_adder = 5
 var current_room = 1
 
 func _ready() -> void:
@@ -37,11 +38,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if exit_door.is_locked and enemy_container.get_child_count() == 0:
+		print("all enemies killed, unlocking door")
 		exit_door.unlock_door()
 
 func start_new_room():
 	exit_door.lock_door()
-	difficulty_score = (current_run_time / 2) + (player.current_level * level_weight) + (current_room * 5)
+	difficulty_score += difficulty_adder
 	hud.set_score(int(difficulty_score))
 	spawn_manager.spawn_wave(difficulty_score)
 
@@ -55,7 +57,7 @@ func on_player_entered_exit():
 func start_boss_room():
 	exit_door.lock_door()
 	exit_door.hide()
-	difficulty_score = (current_run_time / 2) + (player.current_level * level_weight) + (current_room * 5)
+	difficulty_score += difficulty_adder
 	if spawn_manager.has_method("spawn_boss"):
 		spawn_manager.spawn_boss(difficulty_score)
 	else:

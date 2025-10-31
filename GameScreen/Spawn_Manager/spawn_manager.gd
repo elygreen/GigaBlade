@@ -40,4 +40,4 @@ func spawn_one_enemy(enemy_scene: PackedScene):
 		
 	new_enemy.player = self.player
 	new_enemy.xp_orb_container = self.xp_orb_container
-	enemy_container.add_child(new_enemy)
+	enemy_container.call_deferred("add_child", new_enemy)
