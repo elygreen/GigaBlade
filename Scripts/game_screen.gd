@@ -51,7 +51,9 @@ func start_new_room():
 	exit_door.lock_door()
 	difficulty_score += difficulty_adder
 	hud.set_score(int(difficulty_score))
+	spawn_manager.set_spawn_area($Room_1.get_node("Spawn_Area"))
 	spawn_manager.spawn_wave(difficulty_score)
+	
 
 func camera_process(delta):
 	var player_pos = player.global_position

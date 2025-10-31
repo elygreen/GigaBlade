@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3sjm064bshsq"]
+[gd_scene load_steps=10 format=3 uid="uid://b3sjm064bshsq"]
 
 [ext_resource type="Script" uid="uid://ctxtuqyjcecak" path="res://Scripts/game_screen.gd" id="1_hj6vq"]
 [ext_resource type="PackedScene" uid="uid://rnt0uiq1vkwu" path="res://Player/Player.tscn" id="1_rug3u"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://drv56t00ni1rl" path="res://GameScreen/level_up_screen.tscn" id="5_hj6vq"]
 [ext_resource type="PackedScene" uid="uid://w08thk4g4c0d" path="res://hud.tscn" id="7_4hse2"]
 [ext_resource type="PackedScene" uid="uid://ep5ytbx4yhtx" path="res://GameScreen/exit_door.tscn" id="8_thcdu"]
+[ext_resource type="PackedScene" uid="uid://6ds24rxoe5m3" path="res://Rooms/room_1.tscn" id="9_txnu5"]
 
 [node name="GameScreen" type="Node2D" node_paths=PackedStringArray("player", "level_up_screen", "hud", "spawn_manager", "exit_door")]
 script = ExtResource("1_hj6vq")
@@ -38,10 +39,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 53.0
-offset_top = 22.0
-offset_right = 448.0
-offset_bottom = 246.0
+offset_left = 34.0
+offset_top = 37.0
+offset_right = 322.0
+offset_bottom = 219.0
 
 [node name="HUD" parent="." instance=ExtResource("7_4hse2")]
 
@@ -49,5 +50,7 @@ offset_bottom = 246.0
 autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Room_1" parent="." instance=ExtResource("9_txnu5")]
 
 [connection signal="timeout" from="Run_Timer" to="." method="_on_run_timer_timeout"]
