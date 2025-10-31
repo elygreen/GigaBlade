@@ -6,14 +6,15 @@ signal game_over
 @export var level_up_screen: Control
 @export var hud: CanvasLayer
 @export var spawn_manager: Node2D
-
+@export var exit_door: Node2D
 @export var level_weight: float = 2.0
 
 @onready var run_timer = $Run_Timer
-@onready var spawn_timer = $Spawn_Timer
+@onready var enemy_container = $Enemy_Container
 
 var current_run_time: int = 0
 var difficulty_score = 1
+var current_room = 1
 
 func _ready() -> void:
 	PlayerStats.stat_updated.connect(hud.on_player_stat_updated)
@@ -22,7 +23,7 @@ func _ready() -> void:
 	player.experience_changed.connect(hud.set_experience)
 	player.player_died.connect(on_player_died)
 	level_up_screen.upgrade_selected.connect(on_upgrade_selected)
-	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
+	exit_door.player_entered_exit.connect(on_player_entered_exit)
 	SaveManager.upgrade_items_changed.connect(hud.set_upgrade_items)
 
 	PlayerStats.reset_run_stats()
@@ -32,7 +33,34 @@ func _ready() -> void:
 	var initial_score = current_run_time + (player.current_level * level_weight)
 	hud.set_score(int(initial_score)) 
 	hud.set_upgrade_items(SaveManager.data.upgrade_items)
+	start_new_room()
 
+func _process(delta: float) -> void:
+	if exit_door.is_locked and enemy_container.get_child_count() == 0:
+		exit_door.unlock_door()
+
+func start_new_room():
+	exit_door.lock_door()
+	difficulty_score = (current_run_time / 2) + (player.current_level * level_weight) + (current_room * 5)
+	hud.set_score(int(difficulty_score))
+	spawn_manager.spawn_wave(difficulty_score)
+
+func on_player_entered_exit():
+	current_room += 1
+	if current_room > 9:
+		start_boss_room()
+	else:
+		start_new_room()
+
+func start_boss_room():
+	exit_door.lock_door()
+	exit_door.hide()
+	difficulty_score = (current_run_time / 2) + (player.current_level * level_weight) + (current_room * 5)
+	if spawn_manager.has_method("spawn_boss"):
+		spawn_manager.spawn_boss(difficulty_score)
+	else:
+		print("ERROR: spawn_manager is missing spawn_boss() method")
+		
 func on_player_level_up():
 	var choices = GlobalUpgrades.get_random_upgrades(3)
 	level_up_screen.show_upgrades(choices)
@@ -48,11 +76,3 @@ func _on_run_timer_timeout() -> void:
 
 func on_player_died():
 	emit_signal("game_over")
-
-func _on_spawn_timer_timeout() -> void:
-	difficulty_score = current_run_time + (player.current_level * level_weight)
-	hud.set_score(int(difficulty_score))
-	spawn_manager.spawn_wave(difficulty_score)
-	# This will speed up the timer as difficulty increase but we dont want that right now
-	# var new_wait_time = 3.0 - (difficulty_score / 200.0) # 3s, gets faster
-	# spawn_timer.wait_time = max(0.5, new_wait_time)

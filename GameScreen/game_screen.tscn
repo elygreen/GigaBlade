@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3sjm064bshsq"]
+[gd_scene load_steps=9 format=3 uid="uid://b3sjm064bshsq"]
 
 [ext_resource type="Script" uid="uid://ctxtuqyjcecak" path="res://GameScreen/game_screen.gd" id="1_hj6vq"]
 [ext_resource type="PackedScene" uid="uid://rnt0uiq1vkwu" path="res://Player/Player.tscn" id="1_rug3u"]
@@ -7,19 +7,24 @@
 [ext_resource type="PackedScene" uid="uid://16sw57drj5nq" path="res://GameScreen/xp_orb_container.tscn" id="4_4hse2"]
 [ext_resource type="PackedScene" uid="uid://drv56t00ni1rl" path="res://GameScreen/level_up_screen.tscn" id="5_hj6vq"]
 [ext_resource type="PackedScene" uid="uid://w08thk4g4c0d" path="res://hud.tscn" id="7_4hse2"]
+[ext_resource type="PackedScene" uid="uid://ep5ytbx4yhtx" path="res://GameScreen/exit_door.tscn" id="8_thcdu"]
 
-[node name="GameScreen" type="Node2D" node_paths=PackedStringArray("player", "level_up_screen", "hud", "spawn_manager")]
+[node name="GameScreen" type="Node2D" node_paths=PackedStringArray("player", "level_up_screen", "hud", "spawn_manager", "exit_door")]
 script = ExtResource("1_hj6vq")
 player = NodePath("Player")
 level_up_screen = NodePath("Level_Up_Screen")
 hud = NodePath("HUD")
 spawn_manager = NodePath("Spawn_Manager")
+exit_door = NodePath("Exit_Door")
 
 [node name="Player" parent="." instance=ExtResource("1_rug3u")]
-position = Vector2(453, 254)
+position = Vector2(226, 138)
+
+[node name="Exit_Door" parent="." instance=ExtResource("8_thcdu")]
+position = Vector2(239, 13)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(480, 270)
+position = Vector2(240, 135)
 
 [node name="Spawn_Manager" parent="." node_paths=PackedStringArray("player", "xp_orb_container", "enemy_container") instance=ExtResource("2_rlmek")]
 player = NodePath("../Player")
@@ -36,19 +41,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 281.0
-offset_top = 157.0
-offset_right = 676.0
-offset_bottom = 381.0
+offset_left = 53.0
+offset_top = 22.0
+offset_right = 448.0
+offset_bottom = 246.0
 
 [node name="HUD" parent="." instance=ExtResource("7_4hse2")]
 
 [node name="Run_Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="Spawn_Timer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-
 [connection signal="timeout" from="Run_Timer" to="." method="_on_run_timer_timeout"]
-[connection signal="timeout" from="Spawn_Timer" to="." method="_on_spawn_timer_timeout"]
