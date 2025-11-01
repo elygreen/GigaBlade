@@ -15,11 +15,12 @@ signal game_over
 @onready var run_timer = $Run_Timer
 @onready var enemy_container = $Enemy_Container
 @onready var camera_shake_timer = $Camera_Shake_Timer
+@onready var current_room = $Room_1
 
 var current_run_time: int = 0
 var difficulty_score = 1
 var difficulty_adder = 5
-var current_room = 10
+var current_room_number = 11
 var shake_strength: float = 0.0
 
 func _ready() -> void:
@@ -42,7 +43,10 @@ func _ready() -> void:
 	var initial_score = current_run_time + (player.current_level * level_weight)
 	hud.set_score(int(initial_score)) 
 	hud.set_upgrade_items(SaveManager.data.upgrade_items)
-	start_new_room()
+	if current_room_number > 9:
+		start_boss_room()
+	else:
+		start_new_room()
 
 func _process(delta: float) -> void:
 	if exit_door.is_locked and enemy_container.get_child_count() == 0:
@@ -72,8 +76,8 @@ func camera_process(delta):
 		player_camera.offset = Vector2.ZERO
 
 func on_player_entered_exit():
-	current_room += 1
-	if current_room > 9:
+	current_room_number += 1
+	if current_room_number > 9:
 		start_boss_room()
 	else:
 		start_new_room()
@@ -114,3 +118,6 @@ func on_player_hit():
 
 func _on_camera_shake_timer_timeout() -> void:
 	shake_strength = 0.0
+
+func get_current_room():
+	return current_room

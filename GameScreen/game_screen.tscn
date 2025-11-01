@@ -21,14 +21,14 @@ exit_door = NodePath("Exit_Door")
 [node name="Player" parent="." instance=ExtResource("1_rug3u")]
 position = Vector2(226, 138)
 
-[node name="Spawn_Manager" parent="." node_paths=PackedStringArray("player", "xp_orb_container", "enemy_container") instance=ExtResource("2_rlmek")]
+[node name="Spawn_Manager" parent="." node_paths=PackedStringArray("player", "entity_container", "enemy_container") instance=ExtResource("2_rlmek")]
 player = NodePath("../Player")
-xp_orb_container = NodePath("../XP_Orb_Container")
+entity_container = NodePath("../Entity_Container")
 enemy_container = NodePath("../Enemy_Container")
 
 [node name="Enemy_Container" parent="." instance=ExtResource("3_hj6vq")]
 
-[node name="XP_Orb_Container" parent="." instance=ExtResource("4_4hse2")]
+[node name="Entity_Container" parent="." instance=ExtResource("4_4hse2")]
 
 [node name="HUD" parent="." instance=ExtResource("7_4hse2")]
 

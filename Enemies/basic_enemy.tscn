@@ -29,7 +29,7 @@ texture = ExtResource("4_iioo1")
 region_enabled = true
 region_rect = Rect2(65, 0, 14, 16)
 
-[node name="Hitbox" type="Area2D" parent="Sprite2D" groups=["enemy_hitbox"]]
+[node name="Hitbox" type="Area2D" parent="Sprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hitbox"]
 shape = SubResource("RectangleShape2D_naotq")

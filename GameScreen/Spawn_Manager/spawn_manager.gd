@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var player: CharacterBody2D
-@export var xp_orb_container: Node2D
+@export var entity_container: Node2D
 @export var enemy_container: Node2D
 
 var current_spawn_area: Area2D = null
@@ -38,7 +38,7 @@ func spawn_one_enemy(enemy_scene: PackedScene):
 		return
 	var new_enemy = enemy_scene.instantiate()
 	new_enemy.global_position = spawn_position
-	new_enemy.xp_orb_container = self.xp_orb_container
+	new_enemy.entity_container = self.entity_container
 	enemy_container.call_deferred("add_child", new_enemy)
 
 func spawn_boss():
@@ -46,8 +46,14 @@ func spawn_boss():
 		printerr("SpawnManager: Cannot spawn boss, spawn area is not set!")
 		return
 	var boss = BOSS_SCENE.instantiate()
+	var boss_pos = player.global_position
+	var current_room
 	boss.room_area = current_spawn_area
-	boss.global_position = player.global_position
+	if self.owner.has_method("get_current_room"):
+		current_room = self.owner.get_current_room()
+		boss_pos = current_room.get_node("Marker_Containers/Boss_Marker").global_position
+	boss.global_position = boss_pos
+	boss.entity_container = entity_container
 	enemy_container.call_deferred("add_child", boss)
 
 func _get_random_spawn_position() -> Vector2:

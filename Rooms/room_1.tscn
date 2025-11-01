@@ -405,3 +405,9 @@ shape = SubResource("RectangleShape2D_foo3d")
 
 [node name="Player_Spawn" type="Marker2D" parent="."]
 position = Vector2(175, 237)
+
+[node name="Marker_Containers" type="Node2D" parent="."]
+position = Vector2(11.53, 0)
+
+[node name="Boss_Marker" type="Marker2D" parent="Marker_Containers"]
+position = Vector2(163.47, 130)

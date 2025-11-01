@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dujkrhftkt4dt"]
+[gd_scene load_steps=8 format=3 uid="uid://dujkrhftkt4dt"]
 
 [ext_resource type="Script" uid="uid://m74v3ub7m04l" path="res://Bosses/boss_elven_archer.gd" id="1_1abka"]
 [ext_resource type="Texture2D" uid="uid://3ggeosr4ahqw" path="res://Images/GigaBladeSpritesheet.png" id="1_8aqix"]
 [ext_resource type="PackedScene" uid="uid://dlsdd6r5sa5hh" path="res://damage_number.tscn" id="2_api1l"]
+[ext_resource type="PackedScene" uid="uid://cif5mlynp1pim" path="res://Projectiles/arrow_projectile.tscn" id="3_dxthg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1abka"]
 radius = 6.0
@@ -13,9 +14,10 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_8aqix"]
 radius = 9.0
 
-[node name="Boss_Elven_Archer" type="Node2D"]
+[node name="Boss_Elven_Archer" type="CharacterBody2D"]
 script = ExtResource("1_1abka")
 damage_number_scene = ExtResource("2_api1l")
+projectile = ExtResource("3_dxthg")
 
 [node name="Body" type="Sprite2D" parent="."]
 texture = ExtResource("1_8aqix")

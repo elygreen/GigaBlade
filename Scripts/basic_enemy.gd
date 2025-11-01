@@ -21,7 +21,7 @@ enum State {CHASE}
 var current_state = State.CHASE
 
 var player: Node2D = null
-var xp_orb_container: Node2D = null
+var entity_container: Node2D = null
 
 
 func _ready() -> void:
@@ -55,9 +55,9 @@ func chase_state(delta):
 
 func get_hit(damage, is_crit: bool = false):
 	current_health -= damage
-	if damage_number_scene and is_instance_valid(xp_orb_container):
+	if damage_number_scene and is_instance_valid(entity_container):
 		var damage_number = damage_number_scene.instantiate()
-		xp_orb_container.call_deferred("add_child", damage_number)
+		entity_container.call_deferred("add_child", damage_number)
 		var spawn_pos = global_position + Vector2(randf_range(-8, 8), randf_range(-8, 8))
 		damage_number.start(damage, spawn_pos, is_crit)
 	if !health_bar.visible:
@@ -69,15 +69,15 @@ func get_hit(damage, is_crit: bool = false):
 
 func die():
 	AudioManager.play_sfx(death_sound)
-	if xp_orb_scene and is_instance_valid(xp_orb_container):
+	if xp_orb_scene and is_instance_valid(entity_container):
 		var xp_orb = xp_orb_scene.instantiate()
 		xp_orb.global_position = self.global_position
-		xp_orb_container.call_deferred("add_child", xp_orb)
+		entity_container.call_deferred("add_child", xp_orb)
 	if randf() < upgrade_item_drop_chance:
-		if upgrade_item_scene and is_instance_valid(xp_orb_container):
+		if upgrade_item_scene and is_instance_valid(entity_container):
 			var upgrade_item = upgrade_item_scene.instantiate()
 			upgrade_item.global_position = self.global_position
-			xp_orb_container.call_deferred("add_child", upgrade_item)
+			entity_container.call_deferred("add_child", upgrade_item)
 	call_deferred("queue_free")
 
 func custom_ready():

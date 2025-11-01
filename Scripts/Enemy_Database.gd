@@ -7,7 +7,7 @@ const ENEMY_LIST = {
 	},
 	"zombie": {
 		"scene": preload("res://Enemies/zombie.tscn"),
-		"cost": 1
+		"cost": 3
 	},
 }
 

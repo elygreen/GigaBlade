@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgfq2swjlhkvj"]
+
+[ext_resource type="PackedScene" uid="uid://6ds24rxoe5m3" path="res://Rooms/room_1.tscn" id="1_y0omj"]
+[ext_resource type="PackedScene" uid="uid://rnt0uiq1vkwu" path="res://Player/Player.tscn" id="2_wrr5v"]
+[ext_resource type="PackedScene" uid="uid://dujkrhftkt4dt" path="res://Bosses/boss_elven_archer.tscn" id="3_wrr5v"]
+
+[node name="test_boss_arena" type="Node2D"]
+
+[node name="Room_1" parent="." instance=ExtResource("1_y0omj")]
+
+[node name="Player" parent="." instance=ExtResource("2_wrr5v")]
+position = Vector2(180, 157)
+
+[node name="Enemy_Container" type="Node2D" parent="."]
+
+[node name="Boss_Elven_Archer" parent="Enemy_Container" instance=ExtResource("3_wrr5v")]
+position = Vector2(177, 78)
