@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://dujkrhftkt4dt"]
+
+[ext_resource type="Script" uid="uid://m74v3ub7m04l" path="res://Bosses/boss_elven_archer.gd" id="1_1abka"]
+[ext_resource type="Texture2D" uid="uid://3ggeosr4ahqw" path="res://Images/GigaBladeSpritesheet.png" id="1_8aqix"]
+[ext_resource type="PackedScene" uid="uid://dlsdd6r5sa5hh" path="res://damage_number.tscn" id="2_api1l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1abka"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_api1l"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8aqix"]
+radius = 9.0
+
+[node name="Boss_Elven_Archer" type="Node2D"]
+script = ExtResource("1_1abka")
+damage_number_scene = ExtResource("2_api1l")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("1_8aqix")
+region_enabled = true
+region_rect = Rect2(49, 192, 14, 19)
+
+[node name="Bow" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+texture = ExtResource("1_8aqix")
+region_enabled = true
+region_rect = Rect2(65, 192, 18, 24)
+
+[node name="Arrow" type="Sprite2D" parent="Bow"]
+position = Vector2(-2, 0)
+texture = ExtResource("1_8aqix")
+region_enabled = true
+region_rect = Rect2(49, 219, 22, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1abka")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_api1l")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-8, 0)
+shape = SubResource("CircleShape2D_api1l")
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["enemy_hurtbox"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_8aqix")
+
+[node name="Attack_Cooldown" type="Timer" parent="."]
+
+[node name="Attack_Duration" type="Timer" parent="."]

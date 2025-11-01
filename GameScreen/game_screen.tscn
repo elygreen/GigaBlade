@@ -32,6 +32,8 @@ enemy_container = NodePath("../Enemy_Container")
 
 [node name="HUD" parent="." instance=ExtResource("7_4hse2")]
 
+[node name="Level_Up_Screen" parent="." instance=ExtResource("5_hj6vq")]
+
 [node name="Run_Timer" type="Timer" parent="."]
 autostart = true
 
@@ -42,6 +44,8 @@ autostart = true
 [node name="Exit_Door" parent="." instance=ExtResource("8_thcdu")]
 position = Vector2(180, 9)
 
-[node name="Level_Up_Screen" parent="." instance=ExtResource("5_hj6vq")]
+[node name="Camera_Shake_Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="Run_Timer" to="." method="_on_run_timer_timeout"]
+[connection signal="timeout" from="Camera_Shake_Timer" to="." method="_on_camera_shake_timer_timeout"]

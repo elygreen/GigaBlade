@@ -17,16 +17,15 @@ class_name BasicEnemy
 
 @onready var health_bar = $TextureProgressBar
 
-
 enum State {CHASE}
 var current_state = State.CHASE
-
 
 var player: Node2D = null
 var xp_orb_container: Node2D = null
 
 
 func _ready() -> void:
+	custom_ready()
 	player = get_tree().get_first_node_in_group("player")
 	current_health = int(max_health * health_modifier)
 	speed_modifier = randf_range(0.7, 1.3)
@@ -44,11 +43,12 @@ func _physics_process(delta: float) -> void:
 		return
 	match current_state:
 		State.CHASE:
-			chase_state()
+			chase_state(delta)
 	move_and_slide()
 
 
-func chase_state():
+func chase_state(delta):
+	play_chase_animation()
 	var direction = (player.global_position - global_position).normalized()
 	velocity = direction * speed
 
@@ -79,3 +79,9 @@ func die():
 			upgrade_item.global_position = self.global_position
 			xp_orb_container.call_deferred("add_child", upgrade_item)
 	call_deferred("queue_free")
+
+func custom_ready():
+	pass
+
+func play_chase_animation():
+	pass

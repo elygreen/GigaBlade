@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal level_up_started
 signal player_died
+signal player_hit
 signal health_changed(current, max)
 signal experience_changed(current_xp, max_xp, level)
 
@@ -20,7 +21,7 @@ var current_player_speed: float = 100.0
 var current_player_max_health: int = 3
 var current_player_health: int = 3
 
-@export var dash_speed_multiplier: float = 2.0
+@export var dash_speed_multiplier: float = 2.5
 
 const STOP_DISTANCE = 5.0
 const ATTACK_DURATION = .5
@@ -118,6 +119,7 @@ func player_movement():
 func get_hit():
 	current_player_health -= 1
 	emit_signal("health_changed", current_player_health, current_player_max_health)
+	emit_signal("player_hit")
 	if current_player_health <= 0:
 		die()
 

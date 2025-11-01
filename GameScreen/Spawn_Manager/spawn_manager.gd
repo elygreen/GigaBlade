@@ -6,6 +6,7 @@ extends Node2D
 
 var current_spawn_area: Area2D = null
 const MIN_SPAWN_DISTANCE = 100
+const BOSS_SCENE = preload("res://Bosses/boss_elven_archer.tscn")
 
 func set_spawn_area(area: Area2D):
 	current_spawn_area = area
@@ -28,8 +29,6 @@ func spawn_wave(budget: float):
 		spawn_one_enemy(enemy_data.scene)
 		current_budget -= enemy_data.cost
 
-
-
 func spawn_one_enemy(enemy_scene: PackedScene):
 	if not is_instance_valid(player) or not enemy_scene:
 		return
@@ -41,6 +40,15 @@ func spawn_one_enemy(enemy_scene: PackedScene):
 	new_enemy.global_position = spawn_position
 	new_enemy.xp_orb_container = self.xp_orb_container
 	enemy_container.call_deferred("add_child", new_enemy)
+
+func spawn_boss():
+	if current_spawn_area == null:
+		printerr("SpawnManager: Cannot spawn boss, spawn area is not set!")
+		return
+	var boss = BOSS_SCENE.instantiate()
+	boss.room_area = current_spawn_area
+	boss.global_position = player.global_position
+	enemy_container.call_deferred("add_child", boss)
 
 func _get_random_spawn_position() -> Vector2:
 	if current_spawn_area == null:

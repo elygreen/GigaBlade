@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://dpuw78g34jlim" path="res://Images/Progress_Texture_Green.png" id="6_qenpu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_naotq"]
-size = Vector2(10, 14)
+size = Vector2(8, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rwafm"]
-size = Vector2(14, 16)
+size = Vector2(12, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m2rku"]
 radius = 1.0
@@ -29,17 +29,17 @@ texture = ExtResource("4_iioo1")
 region_enabled = true
 region_rect = Rect2(65, 0, 14, 16)
 
-[node name="Hitbox" type="Area2D" parent="." groups=["enemy_hitbox"]]
+[node name="Hitbox" type="Area2D" parent="Sprite2D" groups=["enemy_hitbox"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hitbox"]
 shape = SubResource("RectangleShape2D_naotq")
 
-[node name="Hurtbox" type="Area2D" parent="." groups=["enemy_hurtbox"]]
+[node name="Hurtbox" type="Area2D" parent="Sprite2D" groups=["enemy_hurtbox"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hurtbox"]
 shape = SubResource("RectangleShape2D_rwafm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D"]
 shape = SubResource("CircleShape2D_m2rku")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
@@ -54,5 +54,3 @@ grow_horizontal = 2
 grow_vertical = 2
 texture_under = ExtResource("5_rcyh1")
 texture_progress = ExtResource("6_qenpu")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

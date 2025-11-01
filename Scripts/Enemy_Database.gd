@@ -4,7 +4,11 @@ const ENEMY_LIST = {
 	"basic": {
 		"scene": preload("res://Enemies/basic_enemy.tscn"),
 		"cost": 1
-	}
+	},
+	"zombie": {
+		"scene": preload("res://Enemies/zombie.tscn"),
+		"cost": 1
+	},
 }
 
 var enemy_keys = []

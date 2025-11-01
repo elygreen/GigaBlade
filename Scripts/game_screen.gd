@@ -14,11 +14,13 @@ signal game_over
 @onready var player_camera = $Camera2D
 @onready var run_timer = $Run_Timer
 @onready var enemy_container = $Enemy_Container
+@onready var camera_shake_timer = $Camera_Shake_Timer
 
 var current_run_time: int = 0
 var difficulty_score = 1
 var difficulty_adder = 5
-var current_room = 1
+var current_room = 10
+var shake_strength: float = 0.0
 
 func _ready() -> void:
 	PlayerStats.stat_updated.connect(hud.on_player_stat_updated)
@@ -28,6 +30,7 @@ func _ready() -> void:
 	player.player_died.connect(on_player_died)
 	level_up_screen.upgrade_selected.connect(on_upgrade_selected)
 	exit_door.player_entered_exit.connect(on_player_entered_exit)
+	player.player_hit.connect(on_player_hit)
 	SaveManager.upgrade_items_changed.connect(hud.set_upgrade_items)
 	if player:
 		player_camera.global_position = player.global_position
@@ -51,9 +54,9 @@ func start_new_room():
 	exit_door.lock_door()
 	difficulty_score += difficulty_adder
 	hud.set_score(int(difficulty_score))
+	player.global_position = $Room_1/Player_Spawn.global_position
 	spawn_manager.set_spawn_area($Room_1.get_node("Spawn_Area"))
 	spawn_manager.spawn_wave(difficulty_score)
-	
 
 func camera_process(delta):
 	var player_pos = player.global_position
@@ -62,6 +65,11 @@ func camera_process(delta):
 	var mouse_offset = direction_to_mouse * camera_mouse_influence
 	var target_pos = player_pos + mouse_offset
 	player_camera.global_position = player_camera.global_position.lerp(target_pos, camera_smoothing_speed * delta)
+	if shake_strength > 0:
+		var offset = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)) * shake_strength
+		player_camera.offset = offset
+	else:
+		player_camera.offset = Vector2.ZERO
 
 func on_player_entered_exit():
 	current_room += 1
@@ -75,10 +83,11 @@ func start_boss_room():
 	exit_door.hide()
 	difficulty_score += difficulty_adder
 	if spawn_manager.has_method("spawn_boss"):
-		spawn_manager.spawn_boss(difficulty_score)
+		spawn_manager.set_spawn_area($Room_1/Spawn_Area)
+		spawn_manager.spawn_boss()
 	else:
 		print("ERROR: spawn_manager is missing spawn_boss() method")
-		
+
 func on_player_level_up():
 	var choices = GlobalUpgrades.get_random_upgrades(3)
 	level_up_screen.show_upgrades(choices)
@@ -94,3 +103,14 @@ func _on_run_timer_timeout() -> void:
 
 func on_player_died():
 	emit_signal("game_over")
+
+func camera_shake(strength:float, duration: float):
+	shake_strength = strength
+	camera_shake_timer.wait_time = duration
+	camera_shake_timer.start()
+
+func on_player_hit():
+	camera_shake(2.5, 0.10)
+
+func _on_camera_shake_timer_timeout() -> void:
+	shake_strength = 0.0

@@ -3,22 +3,37 @@ extends Node
 signal stat_updated(stat_name, new_value)
 
 const STATS = {
+	# Player movement speed, % increase
 	"speed": {"base": 75.0, "type": "multiplicative"},
+	# Player health
 	"max_health": {"base": 3, "type": "additive"},
+	# Damage of player's sword
 	"sword_damage": {"base": 2, "type": "additive"},
+	# Sword x & y scale
 	"sword_size": {"base": 1.0, "type": "multiplicative"},
 	"sword_length": {"base": 1.0, "type": "multiplicative"},
 	"sword_width": {"base": 1.0, "type": "multiplicative"},
+	# % chance to deal critical strike
 	"crit_chance": {"base": 0, "type": "additive"},
-	"crit_modifier": {"base": 1.0, "type": "multiplicative"},
+	# % more damage that a crit deals over a normal hit
+	"crit_modifier": {"base": 1.5, "type": "multiplicative"},
+	# Dash cooldown in seconds
 	"dash_timer": {"base": 5, "type": "additive"},
-	"dash_duration": {"base": 2, "type": "additive"},
+	# Dash duration
+	"dash_duration": {"base": .2, "type": "additive"},
+	# No implementation yet
 	"luck": {"base": 0, "type": "additive"},
+	# % more experience player gets from an xp orb
 	"experience_modifier": {"base": 1.0, "type": "multiplicative"},
+	# # of projectiles player shoots
 	"projectile_count": {"base": 0, "type": "additive"},
+	# Speed of player projectiles
 	"projectile_speed": {"base": 0.0, "type": "multiplicative"},
+	# How long player is immmune after taking a hit
 	"immunity_duration": {"base": 0, "type": "additive"},
-	"pickup_radius": {"base": 0.0, "type": "multiplicative"},
+	# Player's pickup radius for dropped items
+	"pickup_radius": {"base": 1.0, "type": "multiplicative"},
+	# Instantly kill any enemy with % health <= execution threshold
 	"execution_threshold": {"base": 0, "type": "additive"},
 }
 
